@@ -14,7 +14,6 @@ export default function ClientApp({ user, onLogout }) {
   const [profile, setProfile] = useState(null);
   const [tab, setTab] = useState("programme");
   const [messages, setMessages] = useState([]);
-  const [msgInput, setMsgInput] = useState([]);
   const [msgText, setMsgText] = useState("");
   const msgEndRef = useRef(null);
 
