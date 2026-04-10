@@ -84,7 +84,7 @@ export default function ClientApp({ user, onLogout }) {
       </div>
 
       <div style={{ display: "flex", borderBottom: "1px solid #1a1b26", background: "#0e0f16" }}>
-        {[["programme", "ðŸ’ª Programme"], ["messages", "ðŸ’¬ Messages"]].map(([key, label]) => (
+        {[["programme", "💪 Programme"], ["messages", "💬 Messages"]].map(([key, label]) => (
           <button key={key} style={S.tab(tab === key)} onClick={() => setTab(key)}>{label}</button>
         ))}
       </div>
@@ -106,7 +106,7 @@ export default function ClientApp({ user, onLogout }) {
 
             {/* Valider séance */}
             <button onClick={validateSession} style={{ width: "100%", background: `linear-gradient(135deg, ${color}33, ${color}11)`, border: `2px solid ${color}55`, borderRadius: 16, padding: "18px", color, fontSize: 16, fontWeight: 800, cursor: "pointer", fontFamily: "inherit", letterSpacing: 1, marginBottom: 16 }}>
-              âœ… VALIDER MA SÉANCE DU JOUR
+              ✅ VALIDER MA SÉANCE DU JOUR
             </button>
 
             {/* Semaines */}
@@ -115,12 +115,12 @@ export default function ClientApp({ user, onLogout }) {
                 <div style={{ fontSize: 11, color: "#555", letterSpacing: 2, marginBottom: 12, fontWeight: 700 }}>MES SEMAINES</div>
                 {profile.program.weeks.map((w, i) => (
                   <div key={i} onClick={() => toggleWeek(i)} style={{ display: "flex", alignItems: "center", gap: 12, padding: "10px 0", borderBottom: i < profile.program.weeks.length - 1 ? "1px solid #1a1b26" : "none", cursor: "pointer" }}>
-                    <div style={{ width: 30, height: 30, borderRadius: 8, background: w.done ? color + "33" : "#1a1b26", border: `2px solid ${w.done ? color : "#2a2b3a"}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, flexShrink: 0, transition: "all 0.2s" }}>{w.done ? "âœ“" : "â—‹"}</div>
+                    <div style={{ width: 30, height: 30, borderRadius: 8, background: w.done ? color + "33" : "#1a1b26", border: `2px solid ${w.done ? color : "#2a2b3a"}`, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 15, flexShrink: 0, transition: "all 0.2s" }}>{w.done ? "✓" : "○"}</div>
                     <div style={{ flex: 1 }}>
                       <div style={{ fontSize: 13, fontWeight: 600, color: w.done ? "#e8e8e8" : "#777" }}>{w.label}</div>
                       <div style={{ fontSize: 11, color: "#555", marginTop: 2 }}>{w.focus}</div>
                     </div>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: w.done ? color : "#444", background: (w.done ? color : "#333") + "22", padding: "3px 10px", borderRadius: 20, border: `1px solid ${w.done ? color : "#333"}55` }}>{w.done ? "FAIT âœ“" : "À FAIRE"}</div>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: w.done ? color : "#444", background: (w.done ? color : "#333") + "22", padding: "3px 10px", borderRadius: 20, border: `1px solid ${w.done ? color : "#333"}55` }}>{w.done ? "FAIT ✓" : "À FAIRE"}</div>
                   </div>
                 ))}
               </div>
@@ -147,7 +147,7 @@ export default function ClientApp({ user, onLogout }) {
 
             {profile.program?.weeks?.length === 0 && profile.program?.exercises?.length === 0 && (
               <div style={{ color: "#444", textAlign: "center", padding: 40, fontSize: 14 }}>
-                <div style={{ fontSize: 36, marginBottom: 12 }}>â ³</div>
+                <div style={{ fontSize: 36, marginBottom: 12 }}>⏳</div>
                 Ton programme arrive bientôt !<br />
                 <span style={{ fontSize: 12, color: "#333", marginTop: 8, display: "block" }}>Ton coach prépare tout ça pour toi.</span>
               </div>
@@ -159,7 +159,7 @@ export default function ClientApp({ user, onLogout }) {
         {tab === "messages" && (
           <div style={{ display: "flex", flexDirection: "column", height: "calc(100vh - 140px)" }}>
             <div style={{ flex: 1, overflowY: "auto", display: "flex", flexDirection: "column", gap: 10, paddingBottom: 8 }}>
-              {messages.length === 0 && <div style={{ color: "#444", textAlign: "center", padding: 32, fontSize: 13 }}>Pas encore de message â€” dis bonjour à ton coach !</div>}
+              {messages.length === 0 && <div style={{ color: "#444", textAlign: "center", padding: 32, fontSize: 13 }}>Pas encore de message — dis bonjour à ton coach !</div>}
               {messages.map(m => (
                 <div key={m.id} style={{ display: "flex", justifyContent: m.from === "client" ? "flex-end" : "flex-start" }}>
                   <div style={{ maxWidth: "78%", padding: "10px 14px", borderRadius: m.from === "client" ? "16px 16px 4px 16px" : "16px 16px 16px 4px", background: m.from === "client" ? color + "cc" : "#1a1b26", border: m.from !== "client" ? "1px solid #2a2b3a" : "none" }}>
@@ -172,7 +172,7 @@ export default function ClientApp({ user, onLogout }) {
             </div>
             <div style={{ paddingTop: 12, borderTop: "1px solid #1a1b26", display: "flex", gap: 8 }}>
               <input value={msgText} onChange={e => setMsgText(e.target.value)} onKeyDown={e => e.key === "Enter" && sendMsg()} placeholder="Message à ton coach..." style={{ ...S.input, flex: 1 }} />
-              <button onClick={sendMsg} style={{ ...S.btn(color), padding: "10px 16px", fontSize: 16 }}>âž¤</button>
+              <button onClick={sendMsg} style={{ ...S.btn(color), padding: "10px 16px", fontSize: 16 }}>➤</button>
             </div>
           </div>
         )}
